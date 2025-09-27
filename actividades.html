@@ -54,8 +54,7 @@
     </div>
     <script>
       // Reemplaza esta URL por la de tu hoja de Google Sheets publicada como CSV
-  const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSJfjsqWOqE-7CKrPmVlUfYyHFRhxMXG59qCZWN2PaDnAibAN7_qTvy9dMMlTekj4dfKqoVuLBbs1mr/pub?gid=0&single=true&output=csv';
-      function renderActividadesDesdeSheet() {
+const SHEET_CSV_URL = 'https://corsproxy.io/?https://docs.google.com/spreadsheets/d/e/2PACX-1vSJfjsqWOqE-7CKrPmVlUfYyHFRhxMXG59qCZWN2PaDnAibAN7_qTvy9dMMlTekj4dfKqoVuLBbs1mr/pub?gid=0&single=true&output=csv';      function renderActividadesDesdeSheet() {
         fetch(SHEET_CSV_URL)
           .then(res => res.text())
           .then(csv => {
