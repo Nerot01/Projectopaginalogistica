@@ -18,6 +18,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav" >
         <ul class="navbar-nav ms-auto align-items-center">
+
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
@@ -46,9 +47,16 @@
     </div>
   </nav>
   <div style="margin-top:80px;"></div>
+
   <div id="noticias" class="container-fluid pt-lg-4 pt-5">
     <div class="row justify-content-center g-4">
-      <div class="col-lg-6">
+  <div class="col-lg-6">
+        <div class="recomendadas-box p-3 bg-white rounded-4 shadow-sm mb-4 glassmorph" style="max-height:370px;overflow-y:auto; min-height: 320px;">
+          <div style="border:2px solid #b71c1c; border-radius:8px; padding:0.5rem 1rem; margin-bottom:1.2rem; background:#b71c1c;">
+            <h2 class="mb-0 text-center" style="color:#fff; font-size:1.1rem;">Noticias Comercio Exterior</h2>
+          </div>
+          <div id="noticiasComex"></div>
+        </div>
         <div class="recomendadas-box p-3 bg-white rounded-4 shadow-sm mb-4 glassmorph" style="max-height:370px;overflow-y:auto; min-height: 320px;">
           <div style="border:2px solid #b71c1c; border-radius:8px; padding:0.5rem 1rem; margin-bottom:1.2rem; background:#b71c1c;">
             <h2 class="mb-0 text-center" style="color:#fff; font-size:1.1rem;">Noticias Logística Marítima Portuaria</h2>
@@ -102,7 +110,39 @@
     </div>
   </div>
   <script>
-    function cargarNoticias() {
+  function cargarNoticias() {
+  const noticiasComex = document.getElementById('noticiasComex');
+      // Mesa Comex - Comercio Exterior
+      if (noticiasComex) {
+        noticiasComex.innerHTML = '<div class="w-100 text-center py-4">Cargando noticias de Mesa Comex...</div>';
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://portalportuario.cl/category/comercio-exterior/feed')
+          .then(res => res.json())
+          .then(data => {
+            if (data.items && data.items.length > 0) {
+              noticiasComex.innerHTML = '';
+              data.items.slice(0, 10).forEach((item, idx) => {
+                let bg = idx % 2 === 0 ? 'rgba(211,47,47,0.80)' : 'rgba(255,205,210,0.70)';
+                let color = idx % 2 === 0 ? '#fff' : '#b71c1c';
+                let html = `<div class='d-flex align-items-center mb-2' style='background:${bg};border-radius:8px;padding:0.5rem 0.7rem;color:${color};transition:background 0.2s;'>`;
+                if (item.thumbnail) {
+                  html += `<img src="${item.thumbnail}" alt="Imagen" style="width:44px;height:32px;object-fit:cover;border-radius:6px;margin-right:10px;">`;
+                }
+                html += `<div style='flex:1;'>`;
+                html += `<div style='font-size:0.95rem;font-weight:500;'><a href='${item.link}' target='_blank' style='color:inherit;text-decoration:none;'>${item.title}</a></div>`;
+                html += `<div style='font-size:0.8rem;color:${idx%2===0?'#ffcdd2':'#b71c1c'};'>${item.pubDate ? item.pubDate.split(' ')[0] : ''}</div>`;
+                html += `</div></div>`;
+                const div = document.createElement('div');
+                div.innerHTML = html;
+                noticiasComex.appendChild(div);
+              });
+            } else {
+              noticiasComex.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+            }
+          })
+          .catch(() => {
+            noticiasComex.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+          });
+      }
       const noticiasPortuarias = document.getElementById('noticiasPortuarias');
       const noticiasActualidad = document.getElementById('noticiasActualidad');
       // Noticias Logística Marítima Portuaria
@@ -171,5 +211,6 @@
     window.addEventListener('DOMContentLoaded', cargarNoticias);
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
