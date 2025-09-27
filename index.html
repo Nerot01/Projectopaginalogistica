@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Escuela de Logística</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://www.virginiogomez.cl" target="_blank">
+          <img src="img/logo-vg.png" alt="Escuela de Logística" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav" >
+          <ul class="navbar-nav ms-auto align-items-center">
+           </li>
+            <li class="nav-item ms-3" style="width:220px; max-width:100vw;">
+              <input id="buscadorGlobalInput" type="text" class="form-control form-control-sm" placeholder="Buscar en el sitio..." autocomplete="off" style="border-radius:20px;">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#" onclick="showView('home')">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="showView('noticias')">Noticias</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="principiosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Plataformas y Recursos
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="principiosDropdown">
+                <li><a class="dropdown-item" href="#" onclick="showSubView('videos')">Principios Logistica</a></li>
+                <li><a class="dropdown-item" href="#" onclick="showSubView('plataformas')">Plataformas</a></li>
+                <li><a class="dropdown-item" href="#" onclick="showSubView('biblioteca')">Biblioteca</a></li>
+                <li><a class="dropdown-item" href="#" onclick="showSubView('lecturas')">Lecturas recomendadas</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="showView('comex')">Mesa Comex</a>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="buscadorResultados" style="display:none; position:absolute; z-index:2000; width:320px;"></div>
+    <div id="buscadorHistorial" style="display:none; position:absolute; z-index:2001; width:320px;"></div>
+    <!-- CONTENIDO PRINCIPAL -->
+    <div style="flex:1 0 auto;">
+      <div id="home" class="view container-fluid p-0">
+        <div class="carousel-wrapper">
+          <div id="carouselInicio" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-dark-overlay"></div>
+              <div class="carousel-item active">
+                <img src="img/imagen2.jpg" class="d-block w-100" alt="Imagen 1">
+              </div>
+              <div class="carousel-item">
+                <img src="img/imagen4.jpg" class="d-block w-100" alt="Imagen 2">
+              </div>
+              <div class="carousel-item">
+                <img src="img/imagen3.png" class="d-block w-100" alt="Imagen 3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselInicio" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselInicio" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+            <div class="carousel-caption-custom">
+              <h1>*** Bienvenido ***</h1>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid px-0">
+          <!-- Carrera Logística -->
+          <div class="row align-items-center py-5" style="background:#b71c1c;">
+            <div class="col-md-6 px-5 order-md-1 order-2 text-md-start text-center">
+              <h2 style="color:#fff;">Técnico en Logística</h2>
+              <p style="color:#ffcdd2; font-size:1.1rem; text-align:justify;">El Técnico de Nivel Superior en Logística del Instituto Profesional Virginio Gómez evidencia responsabilidad, respeto por la diversidad humana, proactividad, compromiso con la calidad y el desarrollo sustentable. Durante su actuar profesional es capaz de apoyar a las organizaciones en la logística de abastecimiento, almacenamiento y distribución de bienes. En la búsqueda del logro de sus objetivos, muestra espíritu de servicio, respeto de la dignidad de las personas y del medioambiente.</p>
+            </div>
+            <div class="col-md-6 px-5 order-md-2 order-1 text-center">
+              <img src="img/imagen4.jpg" alt="Logística" class="img-fluid rounded-3 shadow-sm" style="max-height:260px;object-fit:cover;">
+            </div>
+          </div>
+          <!-- Carrera Logística Marítima Portuaria -->
+          <div class="row align-items-center py-5" style="background:#fff;">
+            <div class="col-md-6 px-5 order-md-2 order-2 text-md-end text-center">
+              <h2 style="color:#b71c1c;">Logística Marítima Portuaria</h2>
+              <p style="color:#333; font-size:1.1rem; text-align:justify;">El Ingeniero de Ejecución en Logística Marítima Portuaria del Instituto Profesional Virginio Gómez es un gestionador del comercio nacional e internacional en los procesos logísticos de operaciones portuarias y marítimas, como también en atención a las naves y a la carga que permiten que todos los procesos asociados a esta área se lleven a cabo en forma eficiente y oportuna, trabajando en contextos colaborativos, globalizados y multidisciplinarios. Para ello, evidencia responsabilidad y compromiso con la calidad, buscando el logro de sus objetivos con espíritu crítico, respetando la diversidad humana y el desarrollo sustentable.</p>
+            </div>
+            <div class="col-md-6 px-5 order-md-1 order-1 text-center">
+              <img src="img/imagen2.jpg" alt="Logística Marítima Portuaria" class="img-fluid rounded-3 shadow-sm" style="max-height:260px;object-fit:cover;">
+            </div>
+          </div>
+          <!-- Carrera Comercio Exterior -->
+          <div class="row align-items-center py-5" style="background:#b71c1c;">
+            <div class="col-md-6 px-5 order-md-1 order-2 text-md-start text-center">
+              <h2 style="color:#fff;">Técnico en Comercio Exterior</h2>
+              <p style="color:#ffcdd2; font-size:1.1rem; text-align:justify;">El Técnico de Nivel Superior en Comercio Exterior del Instituto Profesional Virginio Gómez evidencia responsabilidad, respeto, proactividad y compromiso con la calidad. Durante su actuar profesional es capaz de apoyar a las organizaciones en las diversas operaciones relacionadas con el comercio exterior, buscando el logro de sus objetivos con espíritu crítico, respeto por la dignidad de las personas y del medioambiente.</p>
+            </div>
+            <div class="col-md-6 px-5 order-md-2 order-1 text-center">
+              <img src="img/imagen1.png" alt="Comercio Exterior" class="img-fluid rounded-3 shadow-sm" style="max-height:260px;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="noticias" class="view" style="display:none;">
+        <div class="container-fluid pt-lg-4 pt-5">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-6">
+              <div class="recomendadas-box p-3 bg-white rounded-4 shadow-sm mb-4 glassmorph" style="max-height:370px;overflow-y:auto; min-height: 320px;">
+                <div style="border:2px solid #b71c1c; border-radius:8px; padding:0.5rem 1rem; margin-bottom:1.2rem; background:#b71c1c;">
+                  <h2 class="mb-0 text-center" style="color:#fff; font-size:1.1rem;">Noticias Logística Marítima Portuaria</h2>
+                </div>
+                <div id="noticiasPortuarias"></div>
+              </div>
+              <div class="recomendadas-box p-3 bg-white rounded-4 shadow-sm mb-4 glassmorph" style="max-height:370px;overflow-y:auto; min-height: 320px;">
+                <div style="border:2px solid #b71c1c; border-radius:8px; padding:0.5rem 1rem; margin-bottom:1.2rem; background:#b71c1c;">
+                  <h2 class="mb-0 text-center" style="color:#fff; font-size:1.1rem;">Noticias Logística Actualidad</h2>
+                </div>
+                <div id="noticiasActualidad"></div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="recomendadas-box p-4 bg-white rounded-4 shadow-sm mb-4 glassmorph" style="min-height: 400px; font-size:1.15rem;">
+                <div style="border:2px solid #b71c1c; border-radius:10px; padding:1rem 1.5rem; margin-bottom:1.5rem; background:#b71c1c;">
+                  <h2 class="mb-0 text-center" style="color:#fff; font-size:1.5rem;">Revistas recomendadas</h2>
+                </div>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-4">
+                    <a href="https://economiacircular.mma.gob.cl" target="_blank" style="font-weight:700;color:#b71c1c;font-size:1.1rem;">Economía Circular MMA</a><br>
+                    <span style="font-size:1rem;color:#555;">Noticias y recursos sobre economía circular y sostenibilidad en Chile.</span>
+                  </li>
+                  <li class="mb-4">
+                    <a href="https://www.revistalogistec.com/inicio/noticias-clientes-logistec" target="_blank" style="font-weight:700;color:#b71c1c;font-size:1.1rem;">Revista Logistec</a><br>
+                    <span style="font-size:1rem;color:#555;">Tendencias, clientes y actualidad logística nacional e internacional.</span>
+                  </li>
+                  <li class="mb-4">
+                    <a href="https://portalportuario.cl" target="_blank" style="font-weight:700;color:#b71c1c;font-size:1.1rem;">Portal Portuario</a><br>
+                    <span style="font-size:1rem;color:#555;">Noticias del sector portuario, marítimo y logístico de Chile y el mundo.</span>
+                  </li>
+                  <li class="mb-4">
+                    <a href="https://mascontainer.com" target="_blank" style="font-weight:700;color:#b71c1c;font-size:1.1rem;">MasContainer</a><br>
+                    <span style="font-size:1rem;color:#555;">Actualidad, entrevistas y análisis de logística, transporte y comercio exterior.</span>
+                  </li>
+                  <li class="mb-4">
+                    <a href="https://www.mundomaritimo.cl/main/index" target="_blank" style="font-weight:700;color:#b71c1c;font-size:1.1rem;">Mundo Marítimo</a><br>
+                    <span style="font-size:1rem;color:#555;">Noticias marítimas, portuarias y de transporte internacional.</span>
+                  </li>
+                  <li class="mb-4">
+                    <a href="https://www.observatoriologistico.cl" target="_blank" style="font-weight:700;color:#b71c1c;font-size:1.1rem;">Observatorio Logístico</a><br>
+                    <span style="font-size:1rem;color:#555;">Estadísticas, estudios y reportes del sector logístico chileno.</span>
+                  </li>
+                  <li class="mb-4">
+                    <a href="https://www.camport.cl" target="_blank" style="font-weight:700;color:#b71c1c;font-size:1.1rem;">Camport</a><br>
+                    <span style="font-size:1rem;color:#555;">Cámara Marítima y Portuaria de Chile: información y actualidad sectorial.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="comex" class="view" style="display:none;">
+        <h1 class="mb-4 text-center" style="color:#d32f2f;">EN CONTRUCCIÓN</h1>
+      </div>
+      <div id="videos" class="view" style="display:none;">
+        <div class="container py-5">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+            <h2 class="mb-4 text-center" style="color:#d32f2f;">Principios de la logistica.</h2>
+
+              <div class="mb-4" style="border:2px solid #d32f2f; border-radius:10px; background:#fff3f3; padding:1.5rem;">
+                <h3 class="mb-3 text-center" style="color:#d32f2f;">¿Qué es la logística Empresarial?</h3>
+                <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+                  <iframe src="https://www.youtube.com/embed/PcJK78vwq8s?" title="¿Qué es la logística?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+              </div>
+
+               <div class="mb-4" style="border:2px solid #d32f2f; border-radius:10px; background:#fff3f3; padding:1.5rem;">
+                <h3 class="mb-3 text-center" style="color:#d32f2f;">Lección I: Introducción a la Logística</h3>
+                <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+                  <iframe src="https://www.youtube.com/embed/wWIi-UeY7V0?si=OnGW4GxeKLiAD-Rl" title="¿Qué es la logística?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+               </div>
+               
+               <div class="mb-4" style="border:2px solid #d32f2f; border-radius:10px; background:#fff3f3; padding:1.5rem;">
+                <h3 class="mb-3 text-center" style="color:#d32f2f;">Lección 2: Importancia de la logística</h3>
+                <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+                  <iframe src="https://www.youtube.com/embed/ggyQRrFdCJQ?si=nSucGhLDxGb9g-lV" title="¿Qué es la logística?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+               </div>
+
+                  <div class="mb-4" style="border:2px solid #d32f2f; border-radius:10px; background:#fff3f3; padding:1.5rem;">
+                <h3 class="mb-3 text-center" style="color:#d32f2f;">Lección 3: La evolución de la logística (1950-actualidad)</h3>
+                <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+                  <iframe src="https://www.youtube.com/embed/SFkko2s7eDg?si=zTH2z-lHPaf3wSyn" title="¿Qué es la logística?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+               </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="plataformas" class="view" style="display:none;">
+        <div class="container py-5">
+          <h2 class="mb-4 text-center" style="color:#d32f2f;">Plataformas</h2>
+          <div class="row justify-content-center g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <img src="img/logos/Erp.png" alt="Logo EvaluandoERP" style="height:56px;max-width:120px;margin-bottom:12px;object-fit:contain;">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Conceptos básicos de Sistemas de Gestión</h4>
+                  <p class="card-text" style="color:#b71c1c;">Accede a una explicación clara sobre los conceptos fundamentales de los sistemas de gestión en logística y empresas.</p>
+                  <a href="https://www.evaluandoerp.com/sistema-de-gestion/conceptos-basicos" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ir al recurso</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <img src="img/logos/arracking.png" alt="Logo AR Racking" style="height:56px;max-width:120px;margin-bottom:12px;object-fit:contain;">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">AR Racking</h4>
+                  <p class="card-text" style="color:#b71c1c;">Soluciones de almacenaje industrial y racks para logística moderna.</p>
+                  <a href="https://www.ar-racking.com/cl" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ir al recurso</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <img src="img/logos/weforum.png" alt="Logo World Economic Forum" style="height:56px;max-width:120px;margin-bottom:12px;object-fit:contain;">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">World Economic Forum</h4>
+                  <p class="card-text" style="color:#b71c1c;">Tendencias globales, logística y cadena de suministro a nivel mundial.</p>
+                  <a href="https://es.weforum.org" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ir al recurso</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <img src="img/logos/EAE.png" alt="Logo EAE" style="height:56px;max-width:120px;margin-bottom:12px;object-fit:contain;">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">EAE Business School</h4>
+                  <p class="card-text" style="color:#b71c1c;">Casos de éxito y ejemplos de cadena de suministro (Zara, Amazon, etc).</p>
+                  <a href="https://retos-operaciones-logistica.eae.es/cadena-de-suministro-ejemplos-zara-amazon" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ir al recurso</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <img src="img/logos/South.png" alt="Logo South Logistics" style="height:56px;max-width:120px;margin-bottom:12px;object-fit:contain;">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">South Logistics</h4>
+                  <p class="card-text" style="color:#b71c1c;">Soluciones tecnológicas y servicios para la logística latinoamericana.</p>
+                  <a href="https://web.splogistics.com/es" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ir al recurso</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <img src="img/logos/Element.png" alt="Logo Element Fleet" style="height:56px;max-width:120px;margin-bottom:12px;object-fit:contain;">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Element Fleet</h4>
+                  <p class="card-text" style="color:#b71c1c;">Gestión de flotas y soluciones para transporte y logística.</p>
+                  <a href="https://www.elementfleet.com.mx" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ir al recurso</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <img src="img/logos/mecalux.png" alt="Logo Mecalux" style="height:56px;max-width:120px;margin-bottom:12px;object-fit:contain;">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Mecalux</h4>
+                  <p class="card-text" style="color:#b71c1c;">Soluciones de almacenaje, automatización y software logístico.</p>
+                  <a href="https://www.mecalux.cl" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ir al recurso</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="biblioteca" class="view" style="display:none;">
+        <div class="container py-5">
+          <h2 class="mb-4 text-center" style="color:#d32f2f;">Biblioteca</h2>
+          <div class="row justify-content-center g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Manual de Logística</h4>
+                  <p class="card-text" style="color:#b71c1c;">Manual de logística para consulta y descarga en PDF.</p>
+                  <a href="https://drive.google.com/file/d/1Be79FDoSWozuwMqh3An-TPdcyAXSglPz/view" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ver/Descargar PDF</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Administración de la cadena de suministro</h4>
+                  <p class="card-text" style="color:#b71c1c;">Estrategia, Planeación y Operación para consulta y descarga en PDF.</p>
+                  <a href="https://drive.google.com/file/d/1b7fN3BS0Gjq4PqHn9VVG0wXFmpVh3Xk1/view" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ver/Descargar PDF</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Logística y Productividad</h4>
+                  <p class="card-text" style="color:#b71c1c;">Manual de Logistica para consulta y descarga in PDF.</p>
+                  <a href="https://drive.google.com/file/d/1eddJn6ubbYYOzxlQPeLbTrkCI2vZb5my/view" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ver/Descargar PDF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="lecturas" class="view" style="display:none;">
+        <div class="container py-5">
+          <h2 class="mb-4 text-center" style="color:#d32f2f;">Lecturas recomendadas</h2>
+          <div class="row justify-content-center g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Introducción a la Logistica</h4>
+                  <p class="card-text" style="color:#b71c1c;">Libro esencial sobre la gestión moderna de la cadena de suministro.</p>
+                  <a href="https://drive.google.com/file/d/188vNKDL14UQHlBAqaofqVoCyuovslXUp/view" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ver/Descargar PDF</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Glosario de Logistica</h4>
+                  <p class="card-text" style="color:#b71c1c;">Fundamentos y casos prácticos de logística internacional.</p>
+                  <a href="https://drive.google.com/file/d/1rXmwNyHoUbdtvN-uNeYgZKOIsbhJuF-9/view" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ver/Descargar PDF</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Historia de la Logistica</h4>
+                  <p class="card-text" style="color:#b71c1c;">Estrategias y mejores prácticas en transporte y distribución.</p>
+                  <a href="https://drive.google.com/file/d/1IW_UYR-c9WoSUg2N3ivVS7qh9mtzipm5/view" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ver/Descargar PDF</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Operadores Logisticos</h4>
+                  <p class="card-text" style="color:#b71c1c;">Guía sobre almacenaje eficiente y gestión de centros de distribución.</p>
+                  <a href="https://drive.google.com/file/d/16xGp35PxjslZUuUO3ANpopkhbDhjIRkq/view" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ver/Descargar PDF</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card shadow-sm h-100" style="border:2px solid #d32f2f; border-radius:12px; background:#fff3f3;">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                  <h4 class="card-title mb-2" style="color:#d32f2f;">Situacion actual de la logistica</h4>
+                  <p class="card-text" style="color:#b71c1c;">Análisis de la logística como factor clave de competitividad.</p>
+                  <a href="https://drive.google.com/file/d/1DYYaBfmZOoLbxErvHflYq85_JXvMSe6w/view" target="_blank" class="btn mt-auto" style="background:#d32f2f; color:#fff; font-weight:500; border-radius:6px;">Ver/Descargar PDF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-custom text-white text-center py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 mb-2 mb-md-0">
+            <small>&copy; 2025 Escuela de Logística. Todos los derechos reservados.</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function showView(viewId) {
+        document.querySelectorAll('.view').forEach(div => div.style.display = 'none');
+        document.getElementById(viewId).style.display = 'block';
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        if(viewId === 'noticias') {
+          cargarNoticias();
+          window.location.hash = '#noticias';
+        } else if(viewId === 'home') {
+          window.location.hash = '#home';
+        } else if(viewId === 'contacto') {
+          window.location.hash = '#contacto';
+        } else if(viewId === 'videos') {
+          window.location.hash = '#videos';
+        }
+        handleNavbarTransparency(viewId);
+      }
+      function cargarNoticias() {
+        const noticiasPortuarias = document.getElementById('noticiasPortuarias');
+        const noticiasActualidad = document.getElementById('noticiasActualidad');
+        const noticiasCamport = document.getElementById('noticiasCamport');
+        const noticiasEconomiaCircular = document.getElementById('noticiasEconomiaCircular');
+        // Noticias Logística Marítima Portuaria
+        if (noticiasPortuarias) {
+          noticiasPortuarias.innerHTML = '<div class="w-100 text-center py-4">Cargando noticias de portalportuario.cl...</div>';
+          fetch('https://api.rss2json.com/v1/api.json?rss_url=https://portalportuario.cl/feed/')
+            .then(res => res.json())
+            .then(data => {
+              if (data.items && data.items.length > 0) {
+                noticiasPortuarias.innerHTML = '';
+                data.items.slice(0, 10).forEach((item, idx) => {
+                  let bg = idx % 2 === 0 ? 'rgba(211,47,47,0.80)' : 'rgba(255,205,210,0.70)';
+                  let color = idx % 2 === 0 ? '#fff' : '#b71c1c';
+                  let html = `<div class='d-flex align-items-center mb-2' style='background:${bg};border-radius:8px;padding:0.5rem 0.7rem;color:${color};transition:background 0.2s;'>`;
+                  if (item.thumbnail) {
+                    html += `<img src="${item.thumbnail}" alt="Imagen" style="width:44px;height:32px;object-fit:cover;border-radius:6px;margin-right:10px;">`;
+                  }
+                  html += `<div style='flex:1;'>`;
+                  html += `<div style='font-size:0.95rem;font-weight:500;'><a href='${item.link}' target='_blank' style='color:inherit;text-decoration:none;'>${item.title}</a></div>`;
+                  html += `<div style='font-size:0.8rem;color:${idx%2===0?'#ffcdd2':'#b71c1c'};'>${item.pubDate ? item.pubDate.split(' ')[0] : ''}</div>`;
+                  html += `</div></div>`;
+                  const div = document.createElement('div');
+                  div.innerHTML = html;
+                  noticiasPortuarias.appendChild(div);
+                });
+              } else {
+                noticiasPortuarias.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+              }
+            })
+            .catch(() => {
+              noticiasPortuarias.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+            });
+        }
+        // Noticias Logística Actualidad
+        if (noticiasActualidad) {
+          noticiasActualidad.innerHTML = '<div class="w-100 text-center py-4">Cargando noticias de logistica.mtt.cl...</div>';
+          fetch('https://api.rss2json.com/v1/api.json?rss_url=https://logistica.mtt.cl/feed')
+            .then(res => res.json())
+            .then(data => {
+              if (data.items && data.items.length > 0) {
+                noticiasActualidad.innerHTML = '';
+                data.items.slice(0, 10).forEach((item, idx) => {
+                  let bg = idx % 2 === 0 ? 'rgba(211,47,47,0.80)' : 'rgba(255,205,210,0.70)';
+                  let color = idx % 2 === 0 ? '#fff' : '#b71c1c';
+                  let html = `<div class='d-flex align-items-center mb-2' style='background:${bg};border-radius:8px;padding:0.5rem 0.7rem;color:${color};transition:background 0.2s;'>`;
+                  if (item.thumbnail) {
+                    html += `<img src="${item.thumbnail}" alt="Imagen" style="width:44px;height:32px;object-fit:cover;border-radius:6px;margin-right:10px;">`;
+                  }
+                  html += `<div style='flex:1;'>`;
+                  html += `<div style='font-size:0.95rem;font-weight:500;'><a href='${item.link}' target='_blank' style='color:inherit;text-decoration:none;'>${item.title}</a></div>`;
+                  html += `<div style='font-size:0.8rem;color:${idx%2===0?'#ffcdd2':'#b71c1c'};'>${item.pubDate ? item.pubDate.split(' ')[0] : ''}</div>`;
+                  html += `</div></div>`;
+                  const div = document.createElement('div');
+                  div.innerHTML = html;
+                  noticiasActualidad.appendChild(div);
+                });
+              } else {
+                noticiasActualidad.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+              }
+            })
+            .catch(() => {
+              noticiasActualidad.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+            });
+        }
+        // Noticias Camport
+        if (noticiasCamport) {
+          noticiasCamport.innerHTML = '<div class="w-100 text-center py-4">Cargando noticias de Camport...</div>';
+          fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.camport.cl/feed')
+            .then(res => res.json())
+            .then(data => {
+              if (data.items && data.items.length > 0) {
+                noticiasCamport.innerHTML = '';
+                data.items.forEach((item, idx) => {
+                  let bg = idx % 2 === 0 ? 'rgba(211,47,47,0.80)' : 'rgba(255,205,210,0.70)';
+                  let color = idx % 2 === 0 ? '#fff' : '#b71c1c';
+                  let html = `<div class='d-flex align-items-center mb-2' style='background:${bg};border-radius:8px;padding:0.5rem 0.7rem;color:${color};transition:background 0.2s;'>`;
+                  if (item.thumbnail) {
+                    html += `<img src="${item.thumbnail}" alt="Imagen" style="width:44px;height:32px;object-fit:cover;border-radius:6px;margin-right:10px;">`;
+                  }
+                  html += `<div style='flex:1;'>`;
+                  html += `<div style='font-size:0.95rem;font-weight:500;'><a href='${item.link}' target='_blank' style='color:inherit;text-decoration:none;'>${item.title}</a></div>`;
+                  html += `<div style='font-size:0.8rem;color:${idx%2===0?'#ffcdd2':'#b71c1c'};'>${item.pubDate ? item.pubDate.split(' ')[0] : ''}</div>`;
+                  html += `</div></div>`;
+                  const div = document.createElement('div');
+                  div.innerHTML = html;
+                  noticiasCamport.appendChild(div);
+                });
+              } else {
+                noticiasCamport.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+              }
+            })
+            .catch(() => {
+              noticiasCamport.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+            });
+        }
+        // Noticias Economía Circular MMA
+        if (noticiasEconomiaCircular) {
+          noticiasEconomiaCircular.innerHTML = '<div class="w-100 text-center py-4">Cargando noticias de Economía Circular MMA...</div>';
+          fetch('https://api.rss2json.com/v1/api.json?rss_url=https://economiacircular.mma.gob.cl/feed')
+            .then(res => res.json())
+            .then(data => {
+              if (data.items && data.items.length > 0) {
+                noticiasEconomiaCircular.innerHTML = '';
+                data.items.slice(0, 5).forEach((item, idx) => {
+                  let bg = idx % 2 === 0 ? 'rgba(211,47,47,0.80)' : 'rgba(255,205,210,0.70)';
+                  let color = idx % 2 === 0 ? '#fff' : '#b71c1c';
+                  let html = `<div class='d-flex align-items-center mb-2' style='background:${bg};border-radius:8px;padding:0.5rem 0.7rem;color:${color};transition:background 0.2s;'>`;
+                  if (item.thumbnail) {
+                    html += `<img src="${item.thumbnail}" alt="Imagen" style="width:44px;height:32px;object-fit:cover;border-radius:6px;margin-right:10px;">`;
+                  }
+                  html += `<div style='flex:1;'>`;
+                  html += `<div style='font-size:0.95rem;font-weight:500;'><a href='${item.link}' target='_blank' style='color:inherit;text-decoration:none;'>${item.title}</a></div>`;
+                  html += `<div style='font-size:0.8rem;color:${idx%2===0?'#ffcdd2':'#b71c1c'};'>${item.pubDate ? item.pubDate.split(' ')[0] : ''}</div>`;
+                  html += `</div></div>`;
+                  const div = document.createElement('div');
+                  div.innerHTML = html;
+                  noticiasEconomiaCircular.appendChild(div);
+                });
+              } else {
+                noticiasEconomiaCircular.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+              }
+            })
+            .catch(() => {
+              noticiasEconomiaCircular.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
+            });
+        }
+      }
+      function handleNavbarTransparency(viewId) {
+        const navbar = document.querySelector('.custom-navbar');
+        if (viewId === 'home' && window.scrollY < 50) {
+          navbar.classList.add('transparent');
+        } else {
+          navbar.classList.remove('transparent');
+        }
+      }
+      window.addEventListener('scroll', function() {
+        const isHome = document.getElementById('home').style.display !== 'none';
+        handleNavbarTransparency(isHome ? 'home' : '');
+      });
+      window.addEventListener('DOMContentLoaded', function() {
+        if(window.location.hash && document.getElementById(window.location.hash.replace('#',''))){
+          showView(window.location.hash.replace('#',''));
+        } else {
+          showView('home');
+        }
+      });
+      window.addEventListener('hashchange', function() {
+        if(window.location.hash && document.getElementById(window.location.hash.replace('#',''))){
+          showView(window.location.hash.replace('#',''));
+        }
+      });
+      function showSubView(viewId) {
+        document.querySelectorAll('.view').forEach(div => div.style.display = 'none');
+        document.getElementById(viewId).style.display = 'block';
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        window.location.hash = '#' + viewId;
+        handleNavbarTransparency(viewId);
+      }
+      // --- Buscador global en navbar con historial y revistas ---
+      const buscadorInput = document.getElementById('buscadorGlobalInput');
+      const resultadosDiv = document.getElementById('buscadorResultados');
+      const historialDiv = document.getElementById('buscadorHistorial');
+      let buscadorIndex = [];
+      let historialBusquedas = JSON.parse(localStorage.getItem('buscadorHistorial') || '[]');
+      function indexarBuscador() {
+        buscadorIndex = [];
+        // Plataformas
+        document.querySelectorAll('#plataformas .card').forEach(card => {
+          buscadorIndex.push({
+            tipo: 'Plataforma',
+            titulo: card.querySelector('.card-title')?.innerText || '',
+            desc: card.querySelector('.card-text')?.innerText || '',
+            link: card.querySelector('a')?.href || '',
+            seccion: 'plataformas'
+          });
+        });
+        // Biblioteca
+        document.querySelectorAll('#biblioteca .card').forEach(card => {
+          buscadorIndex.push({
+            tipo: 'Biblioteca',
+            titulo: card.querySelector('.card-title')?.innerText || '',
+            desc: card.querySelector('.card-text')?.innerText || '',
+            link: card.querySelector('a')?.href || '',
+            seccion: 'biblioteca'
+          });
+        });
+        // Lecturas
+        document.querySelectorAll('#lecturas .card').forEach(card => {
+          buscadorIndex.push({
+            tipo: 'Lectura',
+            titulo: card.querySelector('.card-title')?.innerText || '',
+            desc: card.querySelector('.card-text')?.innerText || '',
+            link: card.querySelector('a')?.href || '',
+            seccion: 'lecturas'
+          });
+        });
+        // Noticias (solo títulos de bloques cargados)
+        document.querySelectorAll('#noticias .recomendadas-box h2').forEach(h2 => {
+          buscadorIndex.push({
+            tipo: 'Noticia',
+            titulo: h2.innerText,
+            desc: '',
+            link: '',
+            seccion: 'noticias'
+          });
+        });
+        // Revistas recomendadas
+        document.querySelectorAll('#noticias .recomendadas-box ul.list-unstyled li').forEach(li => {
+          const a = li.querySelector('a');
+          const span = li.querySelector('span');
+          if (a) {
+            buscadorIndex.push({
+              tipo: 'Revista',
+              titulo: a.innerText,
+              desc: span ? span.innerText : '',
+              link: a.href,
+              seccion: 'noticias'
+            });
+          }
+        });
+      }
+      function mostrarHistorial() {
+        if (!historialBusquedas.length) return;
+        historialDiv.innerHTML = '<div class="list-group mt-2">' + historialBusquedas.map(q =>
+          `<button type="button" class="list-group-item list-group-item-action" style="color:#b71c1c;" onclick="document.getElementById('buscadorGlobalInput').value='${q}';document.getElementById('buscadorGlobalInput').dispatchEvent(new Event('input'));document.getElementById('buscadorHistorial').style.display='none';">${q}</button>`
+        ).join('') + '</div>';
+        // Posicionar igual que resultados
+        const inputRect = buscadorInput.getBoundingClientRect();
+        historialDiv.style.top = (window.scrollY + inputRect.bottom + 4) + 'px';
+        historialDiv.style.left = (window.scrollX + inputRect.left) + 'px';
+        historialDiv.style.width = inputRect.width + 'px';
+        historialDiv.style.display = 'block';
+      }
+      buscadorInput?.addEventListener('focus', function() {
+        if (!this.value.trim()) mostrarHistorial();
+      });
+      buscadorInput?.addEventListener('blur', function() {
+        setTimeout(()=>{historialDiv.style.display='none';}, 200);
+      });
+      buscadorInput?.addEventListener('input', function() {
+        const q = this.value.trim().toLowerCase();
+        if (!q) {
+          resultadosDiv.style.display = 'none';
+          resultadosDiv.innerHTML = '';
+          mostrarHistorial();
+          return;
+        }
+        historialDiv.style.display = 'none';
+        const resultados = buscadorIndex.filter(item =>
+          item.titulo.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q)
+        );
+        if (resultados.length === 0) {
+          resultadosDiv.innerHTML = '<div class="list-group-item">No se encontraron resultados.</div>';
+        } else {
+          resultadosDiv.innerHTML = '<div class="list-group mt-2">' + resultados.map(item =>
+            `<a href="#${item.seccion}" class="list-group-item list-group-item-action" onclick="showView('${item.seccion}');document.getElementById('buscadorGlobalInput').value='';document.getElementById('buscadorResultados').style.display='none';agregarHistorialBusqueda('${item.titulo.replace(/'/g, '\'')}');">
+              <div class="fw-bold">${item.titulo}</div>
+              <div style="font-size:0.97rem;">${item.desc}</div>
+              <span class="badge bg-secondary mt-1">${item.tipo}</span>
+            </a>`
+          ).join('') + '</div>';
+        }
+        // Posicionar resultados debajo del input
+        const inputRect = buscadorInput.getBoundingClientRect();
+        resultadosDiv.style.top = (window.scrollY + inputRect.bottom + 4) + 'px';
+        resultadosDiv.style.left = (window.scrollX + inputRect.left) + 'px';
+        resultadosDiv.style.width = inputRect.width + 'px';
+        resultadosDiv.style.display = 'block';
+      });
+      // Guardar historial
+      function agregarHistorialBusqueda(q) {
+        q = q.trim();
+        if (!q) return;
+        historialBusquedas = historialBusquedas.filter(item => item !== q);
+        historialBusquedas.unshift(q);
+        if (historialBusquedas.length > 8) historialBusquedas = historialBusquedas.slice(0,8);
+        localStorage.setItem('buscadorHistorial', JSON.stringify(historialBusquedas));
+      }
+      // Ocultar resultados al hacer click fuera
+      document.addEventListener('click', function(e) {
+        if (!buscadorInput.contains(e.target) && !resultadosDiv.contains(e.target) && !historialDiv.contains(e.target)) {
+          resultadosDiv.style.display = 'none';
+          historialDiv.style.display = 'none';
+        }
+      });
+      window.addEventListener('DOMContentLoaded', indexarBuscador);
+      window.addEventListener('hashchange', indexarBuscador);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
