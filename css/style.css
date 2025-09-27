@@ -97,9 +97,11 @@ body {
   padding-bottom: 1rem;
   min-height: 72px;
 }
-.custom-navbar.transparent {
-  background: transparent !important;
-  box-shadow: none !important;
+@media (min-width: 768px) {
+  .custom-navbar.transparent {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
 }
 .navbar-brand {
   font-weight: bold;
@@ -176,8 +178,16 @@ footer {
     text-align: center;
   }
   #carouselInicio .carousel-item img {
-    height: 200px;
-    min-height: unset;
+    height: 80vh;
+    min-height: 320px;
+    max-height: 900px;
+    object-fit: cover;
+    width: 100vw;
+  }
+  .carousel-wrapper {
+    min-height: 320px;
+    height: 80vh;
+    max-height: 1000px;
   }
 }
 .carousel-inner {
