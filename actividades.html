@@ -71,9 +71,10 @@ const SHEET_CSV_URL = 'https://corsproxy.io/?https://docs.google.com/spreadsheet
               if (act['Media (URL)']) {
                 let mediaUrl = act['Media (URL)'];
                 // Si es un enlace de Google Drive tipo /file/d/ID/view, convertirlo a formato directo
-                const driveMatch = mediaUrl.match(/drive\.google\.com\/file\/d\/([\w-]+)\/view/);
-                if (driveMatch) {
-                  mediaUrl = `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
+              let driveMatch = mediaUrl.match(/\/d\/([\w-]+)(?:\/|$)/) 
+               || mediaUrl.match(/id=([\w-]+)/);
+                  if (driveMatch) {
+                mediaUrl = `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
                 }
                 if (/youtu(be)?\.([a-z]+)/.test(mediaUrl)) {
                   let id = '';
