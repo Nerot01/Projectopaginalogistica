@@ -18,7 +18,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav" >
         <ul class="navbar-nav ms-auto align-items-center">
-
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
@@ -46,71 +45,67 @@
       </div>
     </div>
   </nav>
-    <div style="margin-top:80px;"></div>
 
-    <div class="container py-5">
-      <h1 class="mb-4 text-center" style="color:#d32f2f;">Actividades</h1>
-      <div id="actividades-lista"></div>
-    </div>
-    <script>
-      // Reemplaza esta URL por la de tu hoja de Google Sheets publicada como CSV
-const SHEET_CSV_URL = 'https://corsproxy.io/?https://docs.google.com/spreadsheets/d/e/2PACX-1vSJfjsqWOqE-7CKrPmVlUfYyHFRhxMXG59qCZWN2PaDnAibAN7_qTvy9dMMlTekj4dfKqoVuLBbs1mr/pub?gid=0&single=true&output=csv';      function renderActividadesDesdeSheet() {
-        fetch(SHEET_CSV_URL)
-          .then(res => res.text())
-          .then(csv => {
-            const rows = csv.trim().split('\n').map(row => row.split(','));
-            const headers = rows[0];
-            const actividades = rows.slice(1).map(cols => {
-              const obj = {};
-              headers.forEach((h, i) => obj[h.trim()] = cols[i] ? cols[i].trim() : '');
-              return obj;
-            });
-            const cont = document.getElementById('actividades-lista');
-            cont.innerHTML = actividades.map(act => {
-              let mediaHtml = '';
-              if (act['Media (URL)']) {
-                let mediaUrl = act['Media (URL)'];
-                // Si es un enlace de Google Drive tipo /file/d/ID/view, convertirlo a formato directo
-              let driveMatch = mediaUrl.match(/\/d\/([\w-]+)(?:\/|$)/) 
-               || mediaUrl.match(/id=([\w-]+)/);
-                  if (driveMatch) {
-                mediaUrl = `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
-                }
-                if (/youtu(be)?\.([a-z]+)/.test(mediaUrl)) {
-                  let id = '';
-                  const ytMatch = mediaUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/))([\w-]{11})/);
-                  if (ytMatch) id = ytMatch[1];
-                  if (id) mediaHtml = `<div class='mb-2'><iframe width='100%' height='315' src='https://www.youtube.com/embed/${id}' frameborder='0' allowfullscreen></iframe></div>`;
-                  else mediaHtml = `<a href='${mediaUrl}' target='_blank'>Ver video</a>`;
-                } else if (/(jpg|jpeg|png|webp|gif)(\?.*)?$/i.test(mediaUrl) || mediaUrl.includes('drive.google.com/uc?export=view&id=')) {
-                  mediaHtml = `<div class='mb-2'><img src='${mediaUrl}' alt='media' style='max-width:100%;max-height:320px;border-radius:8px;'></div>`;
-                } else {
-                  mediaHtml = `<span style='font-size:0.95em;word-break:break-all;'>${mediaUrl}</span>`;
-                }
-              }
-              return `
-              <div class="row align-items-center py-4 mb-4" style="background:#fff3f3; border-radius:18px; border:2px solid #d32f2f;">
-                <div class="col-md-6 px-4 order-md-1 order-2 text-md-start text-center">
-                  <h2 style="color:#d32f2f;">${act['Título']}</h2>
-                  <p style="color:#b71c1c; font-size:1.1rem; text-align:justify;">${act['Descripción']}</p>
-                  <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                    <span class="badge bg-danger">Actividad</span>
-                    <span class="text-muted" style="font-size:1rem;"><b>Fecha:</b> ${act['Fecha']}</span>
-                    <span class="text-muted" style="font-size:1rem;"><b>Lugar:</b> ${act['Lugar']}</span>
-                  </div>
-                </div>
-                <div class="col-md-6 px-4 order-md-2 order-1 text-center">
-                  ${mediaHtml}
-                </div>
+  <div style="margin-top:80px;"></div>
+
+  <div class="container py-5">
+    <h1 class="mb-4 text-center" style="color:#d32f2f;">Actividades</h1>
+    <div id="actividades-lista"></div>
+  </div>
+
+  <!-- PapaParse para CSV con comillas -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script>
+    const SHEET_CSV_URL = 'https://corsproxy.io/?https://docs.google.com/spreadsheets/d/e/2PACX-1vSJfjsqWOqE-7CKrPmVlUfYyHFRhxMXG59qCZWN2PaDnAibAN7_qTvy9dMMlTekj4dfKqoVuLBbs1mr/pub?gid=0&single=true&output=csv';
+
+    Papa.parse(SHEET_CSV_URL, {
+      download: true,
+      header: true,
+      complete: function(results) {
+        const actividades = results.data;
+        const cont = document.getElementById('actividades-lista');
+
+        cont.innerHTML = actividades.map(act => {
+          let mediaHtml = '';
+          if (act['Media (URL)']) {
+            let mediaUrl = act['Media (URL)'];
+            let driveMatch = mediaUrl.match(/\/d\/([\w-]+)(?:\/|$)/) || mediaUrl.match(/id=([\w-]+)/);
+            if (driveMatch) mediaUrl = `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
+            
+            if (/youtu(be)?\.([a-z]+)/.test(mediaUrl)) {
+              let id = '';
+              const ytMatch = mediaUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/))([\w-]{11})/);
+              if (ytMatch) id = ytMatch[1];
+              if (id) mediaHtml = `<div class='mb-2'><iframe width='100%' height='315' src='https://www.youtube.com/embed/${id}' frameborder='0' allowfullscreen></iframe></div>`;
+              else mediaHtml = `<a href='${mediaUrl}' target='_blank'>Ver video</a>`;
+            } else if (/(jpg|jpeg|png|webp|gif)$/i.test(mediaUrl)) {
+              mediaHtml = `<div class='mb-2'><img src='${mediaUrl}' alt='media' style='max-width:100%;max-height:320px;border-radius:8px;'></div>`;
+            } else {
+              mediaHtml = `<span style='font-size:0.95em;word-break:break-all;'>${mediaUrl}</span>`;
+            }
+          }
+
+          return `
+          <div class="row align-items-center py-4 mb-4" style="background:#fff3f3; border-radius:18px; border:2px solid #d32f2f;">
+            <div class="col-md-6 px-4 order-md-1 order-2 text-md-start text-center">
+              <h2 style="color:#d32f2f;">${act['Título']}</h2>
+              <p style="color:#b71c1c; font-size:1.1rem; text-align:justify;">${act['Descripción']}</p>
+              <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span class="badge bg-danger">Actividad</span>
+                <span class="text-muted" style="font-size:1rem;"><b>Fecha:</b> ${act['Fecha']}</span>
+                <span class="text-muted" style="font-size:1rem;"><b>Lugar:</b> ${act['Lugar']}</span>
               </div>
-              `;
-            }).join('');
-          });
+            </div>
+            <div class="col-md-6 px-4 order-md-2 order-1 text-center">
+              ${mediaHtml}
+            </div>
+          </div>
+          `;
+        }).join('');
       }
-      renderActividadesDesdeSheet();
-    </script>
+    });
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
