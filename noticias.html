@@ -145,6 +145,8 @@
       }
       const noticiasPortuarias = document.getElementById('noticiasPortuarias');
       const noticiasActualidad = document.getElementById('noticiasActualidad');
+
+
       // Noticias Logística Marítima Portuaria
       if (noticiasPortuarias) {
         noticiasPortuarias.innerHTML = '<div class="w-100 text-center py-4">Cargando noticias de portalportuario.cl...</div>';
@@ -176,6 +178,8 @@
             noticiasPortuarias.innerHTML = '<p>No se pudieron cargar noticias externas.</p>';
           });
       }
+
+      
       // Noticias Logística Actualidad
       if (noticiasActualidad) {
         noticiasActualidad.innerHTML = '<div class="w-100 text-center py-4">Cargando noticias de logistica.mtt.cl...</div>';
@@ -212,5 +216,16 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- FOOTER -->
+    </div>
+    <footer class="footer-custom text-white text-center py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 mb-2 mb-md-0">
+            <small>&copy; 2025 Academia de Logística. Todos los derechos reservados.</small>
+          </div>
+        </div>
+      </div>
+    </footer>
 </body>
 </html>
